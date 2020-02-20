@@ -15,7 +15,9 @@ public class ClienteController {
 	
 	private ClienteRepository repository;
 
-	   ClienteController(ClienteRepository clienteRepository) {
+	public ClienteController()	{};
+
+	   public ClienteController(ClienteRepository clienteRepository) {
 	       this.repository = clienteRepository;
 	   }
 	   // métodos do CRUD aqui
@@ -24,4 +26,8 @@ public class ClienteController {
 	      return repository.findAll();
 	   }
 
+	   @GetMapping
+    	public String home() {
+          return "JUnit funcionando...";
+       }
 }
