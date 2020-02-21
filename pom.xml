@@ -15,7 +15,7 @@
 	<description>Fiap Project</description>
 
 	<properties>
-	    <maven.test.skip>true</maven.test.skip>
+	    <maven.test.skip>false</maven.test.skip>
     	<java.version>11</java.version>
 		<spring-cloud.version>Hoxton.RC1</spring-cloud.version>		
 	</properties>
