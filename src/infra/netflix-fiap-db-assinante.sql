@@ -1,6 +1,6 @@
 SET GLOBAL time_zone = '+3:00';
-create schema assinante;
-use assinante;
+create schema if not exists netflix_assinante;
+use netflix_assinante;
 
 CREATE TABLE cliente (
   codigo BIGINT  NOT NULL   AUTO_INCREMENT,
@@ -115,109 +115,109 @@ INDEX Chamado_Tecnico_FKIndex1(dispositivo_assinante_codigo),
       ON UPDATE NO ACTION);
 
 
-INSERT INTO `assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
+INSERT INTO `netflix_assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
 VALUES ('Fernando Ramos da Silva', 'fernandoramos.dev@gmail.com', '11999800861', 2);
 
-INSERT INTO `assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
+INSERT INTO `netflix_assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
 VALUES ('Nathalia Rodrigues', 'nathaliarmoncao@gmail.com', '11123456789', 3);
 
-INSERT INTO `assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
+INSERT INTO `netflix_assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
 VALUES ('Mariana Araujo', 'mariana.araujo.88@gmail.com', '11123456789', 4);
 
-INSERT INTO `assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
+INSERT INTO `netflix_assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
 VALUES ('Robson Ferreira', 'br.robsonferreira@gmail.com', '11123456789', 1);
 
-INSERT INTO `assinante`.`perfil_cliente` (`cliente_codigo`, `nome`, `data_criacao`,
+INSERT INTO `netflix_assinante`.`perfil_cliente` (`cliente_codigo`, `nome`, `data_criacao`,
 `idioma`, `tipo_conteudo_permitido`, `som_ativado_home`)
 VALUES (1, 'Pai', '2019-02-01', 2, 5 ,'N');
 
-INSERT INTO `assinante`.`perfil_cliente` (`cliente_codigo`, `nome`, `data_criacao`,
+INSERT INTO `netflix_assinante`.`perfil_cliente` (`cliente_codigo`, `nome`, `data_criacao`,
 `idioma`, `tipo_conteudo_permitido`, `som_ativado_home`)
 VALUES (1, 'Mae', '2019-02-08', 2, 5 ,'S');
 
-INSERT INTO `assinante`.`perfil_cliente` (`cliente_codigo`, `nome`, `data_criacao`,
+INSERT INTO `netflix_assinante`.`perfil_cliente` (`cliente_codigo`, `nome`, `data_criacao`,
 `idioma`, `tipo_conteudo_permitido`, `som_ativado_home`)
 VALUES (2, 'Maria', '2019-03-10', 2, 3 ,'N');
 
-INSERT INTO `assinante`.`perfil_cliente` (`cliente_codigo`, `nome`, `data_criacao`,
+INSERT INTO `netflix_assinante`.`perfil_cliente` (`cliente_codigo`, `nome`, `data_criacao`,
 `idioma`, `tipo_conteudo_permitido`, `som_ativado_home`)
 VALUES (3, 'Jose', '2019-04-25', 2, 2 ,'S');
 
-INSERT INTO `assinante`.`perfil_cliente` (`cliente_codigo`, `nome`, `data_criacao`,
+INSERT INTO `netflix_assinante`.`perfil_cliente` (`cliente_codigo`, `nome`, `data_criacao`,
 `idioma`, `tipo_conteudo_permitido`, `som_ativado_home`)
 VALUES (4, 'Bolinha', '2019-04-28', 2, 1 ,'S');
 
-INSERT INTO `assinante`.`conteudo_perfil_cliente` (`perfil_cliente_codigo`, 
+INSERT INTO `netflix_assinante`.`conteudo_perfil_cliente` (`perfil_cliente_codigo`, 
 `codigo_conteudo`, `favorito`, `avaliacao`, `timestamp_ultimo_acesso`)
 VALUES (1, 1, 'S','C', '2019-10-21');
 
-INSERT INTO `assinante`.`conteudo_perfil_cliente` (`perfil_cliente_codigo`, 
+INSERT INTO `netflix_assinante`.`conteudo_perfil_cliente` (`perfil_cliente_codigo`, 
 `codigo_conteudo`, `favorito`, `avaliacao`, `timestamp_ultimo_acesso`)
 VALUES (2, 1, 'N', 'N', '2019-10-10');
 
-INSERT INTO `assinante`.`conteudo_perfil_cliente` (`perfil_cliente_codigo`, 
+INSERT INTO `netflix_assinante`.`conteudo_perfil_cliente` (`perfil_cliente_codigo`, 
 `codigo_conteudo`, `favorito`, `avaliacao`, `timestamp_ultimo_acesso`)
 VALUES (2, 2, 'S', 'C', '2019-10-10');
 
-INSERT INTO `assinante`.`situacao_cliente_plataforma` (`cliente_codigo`,
+INSERT INTO `netflix_assinante`.`situacao_cliente_plataforma` (`cliente_codigo`,
 `codigo`, `data_ativacao`)
 VALUES (1, 1, '2018-11-30');
 
-INSERT INTO `assinante`.`situacao_cliente_plataforma` (`cliente_codigo`,
+INSERT INTO `netflix_assinante`.`situacao_cliente_plataforma` (`cliente_codigo`,
 `codigo`, `data_ativacao`)
 VALUES (2, 1, '2018-12-20');
 
-INSERT INTO `assinante`.`situacao_cliente_plataforma` (`cliente_codigo`,
+INSERT INTO `netflix_assinante`.`situacao_cliente_plataforma` (`cliente_codigo`,
 `codigo`, `data_ativacao`)
 VALUES (3, 1, '2018-12-26');
 
-INSERT INTO `assinante`.`pagamento_cliente` (`cliente_codigo`, `codigo_forma_pagamento`, 
+INSERT INTO `netflix_assinante`.`pagamento_cliente` (`cliente_codigo`, `codigo_forma_pagamento`, 
 `data_validade_pagamento`)
 VALUES (1, 1, '2020-02-01');
 
-INSERT INTO `assinante`.`pagamento_cliente` (`cliente_codigo`, `codigo_forma_pagamento`, 
+INSERT INTO `netflix_assinante`.`pagamento_cliente` (`cliente_codigo`, `codigo_forma_pagamento`, 
 `data_validade_pagamento`)
 VALUES (2, 1, '2020-01-25');
 
-INSERT INTO `assinante`.`pagamento_cliente` (`cliente_codigo`, `codigo_forma_pagamento`, 
+INSERT INTO `netflix_assinante`.`pagamento_cliente` (`cliente_codigo`, `codigo_forma_pagamento`, 
 `data_validade_pagamento`)
 VALUES (3, 2, '2020-03-10');
 
-INSERT INTO `assinante`.`pagamento_cliente` (`cliente_codigo`, `codigo_forma_pagamento`, 
+INSERT INTO `netflix_assinante`.`pagamento_cliente` (`cliente_codigo`, `codigo_forma_pagamento`, 
 `data_validade_pagamento`)
 VALUES (4, 1, '2020-03-15');
 
-INSERT INTO `assinante`.`historico_pagamento_cliente` (`pagamento_cliente_codigo`,
+INSERT INTO `netflix_assinante`.`historico_pagamento_cliente` (`pagamento_cliente_codigo`,
 `timestamp_uso`, `estado_processamento_pagamento`)
 VALUES 	(1, '2019-02-01 08:10:45', 1);
 
-INSERT INTO `assinante`.`historico_pagamento_cliente` (`pagamento_cliente_codigo`,
+INSERT INTO `netflix_assinante`.`historico_pagamento_cliente` (`pagamento_cliente_codigo`,
 `timestamp_uso`, `estado_processamento_pagamento`)
 VALUES 	(1, '2019-02-01 08:11:30', 2);
 
-INSERT INTO `assinante`.`historico_pagamento_cliente` (`pagamento_cliente_codigo`,
+INSERT INTO `netflix_assinante`.`historico_pagamento_cliente` (`pagamento_cliente_codigo`,
 `timestamp_uso`, `estado_processamento_pagamento`)
 VALUES 	(1, '2019-02-01 17:00:10', 3);
 
-INSERT INTO `assinante`.`historico_pagamento_cliente` (`pagamento_cliente_codigo`,
+INSERT INTO `netflix_assinante`.`historico_pagamento_cliente` (`pagamento_cliente_codigo`,
 `timestamp_uso`, `estado_processamento_pagamento`)
 VALUES 	(1, '2019-02-02 10:010:10', 4);
 
 
-INSERT INTO `assinante`.`dispositivo_assinante` (`cliente_codigo`, `descricao`, `tipo`)
+INSERT INTO `netflix_assinante`.`dispositivo_assinante` (`cliente_codigo`, `descricao`, `tipo`)
 VALUES (1, 'Moto G5', 2);
-INSERT INTO `assinante`.`dispositivo_assinante` (`cliente_codigo`, `descricao`, `tipo`)
+INSERT INTO `netflix_assinante`.`dispositivo_assinante` (`cliente_codigo`, `descricao`, `tipo`)
 VALUES (1, 'Nintendo Wii U', 4);
 
-INSERT INTO `assinante`.`historico_uso_plataforma` (`dispositivo_assinante_codigo`, 
+INSERT INTO `netflix_assinante`.`historico_uso_plataforma` (`dispositivo_assinante_codigo`, 
 `timestamp_acesso`, `endereco_ip_acesso`)
 VALUES (1, '2019-10-21 21:00:00', '201.15.93.45');
 
-INSERT INTO `assinante`.`historico_uso_plataforma` (`dispositivo_assinante_codigo`, 
+INSERT INTO `netflix_assinante`.`historico_uso_plataforma` (`dispositivo_assinante_codigo`, 
 `timestamp_acesso`, `endereco_ip_acesso`)
 VALUES (2, '2019-10-21 15:30:00', '201.15.93.45');
 
-INSERT INTO `assinante`.`chamado_tecnico` (`dispositivo_assinante_codigo`,
+INSERT INTO `netflix_assinante`.`chamado_tecnico` (`dispositivo_assinante_codigo`,
 `timestamp_abertura`, `descricao`)
 VALUES (1, '2019-10-21 21:05:58', 'Conexao caindo');
 

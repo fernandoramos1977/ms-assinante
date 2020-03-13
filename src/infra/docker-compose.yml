@@ -1,6 +1,15 @@
 version: '3'
 
 services:
+  assinante:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: ms-assinante
+    ports: 
+      - 8080
+    networks:
+      - mysql-compose-network
   db:
     image: mysql
     restart: always
@@ -9,7 +18,7 @@ services:
       MYSQL_USER: "gentilis-db"
       MYSQL_PASSWORD: "fiap20202019" 
       MYSQL_ROOT_PASSWORD: "fiap20202019"
-      MYSQL_DATABASE: "fiap-netflix"
+      MYSQL_DATABASE: "netflix_assinante"
     ports:
       - "3306:3306"
     volumes:
@@ -18,13 +27,13 @@ services:
     networks:
       - mysql-compose-network
 
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 50000:50000
-    networks:
-      - mysql-compose-network
+#adminer:
+#  image: adminer
+#  restart: always
+#    ports:
+#      - 50000:50000
+#    networks:
+#      - mysql-compose-network
 
 networks: 
   mysql-compose-network:
