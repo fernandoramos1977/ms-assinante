@@ -1,21 +1,12 @@
 version: '3'
 
-services:
-  assinante:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    image: ms-assinante
-    ports: 
-      - 8080
-    networks:
-      - mysql-compose-network
+services:  
   db:
     image: mysql
     restart: always
     command: --default-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_USER: "gentilis-db"
+      MYSQL_USER: "root"
       MYSQL_PASSWORD: "fiap20202019" 
       MYSQL_ROOT_PASSWORD: "fiap20202019"
       MYSQL_DATABASE: "netflix_assinante"
@@ -26,7 +17,15 @@ services:
       - C:/Users/Fernando/Documents/Projetos/workspace/mysql-dump:/docker-entrypoint-initdb.d
     networks:
       - mysql-compose-network
-
+  assinante:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: ms-assinante
+    ports: 
+      - 9090
+    networks:
+      - mysql-compose-network
 #adminer:
 #  image: adminer
 #  restart: always

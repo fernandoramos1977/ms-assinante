@@ -2,6 +2,13 @@ SET GLOBAL time_zone = '+3:00';
 create schema if not exists netflix_assinante;
 use netflix_assinante;
 
+CREATE TABLE usuario (
+  codigo BIGINT  NOT NULL   AUTO_INCREMENT,
+  nome VARCHAR(45)  NOT NULL  ,
+  email VARCHAR(45)  NOT NULL  ,
+  senha VARCHAR(8)  NOT NULL  ,  
+PRIMARY KEY(codigo));
+
 CREATE TABLE cliente (
   codigo BIGINT  NOT NULL   AUTO_INCREMENT,
   nome VARCHAR(45)  NOT NULL  ,
@@ -114,6 +121,17 @@ INDEX Chamado_Tecnico_FKIndex1(dispositivo_assinante_codigo),
       ON DELETE NO ACTION
       ON UPDATE NO ACTION);
 
+INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
+VALUES ('fernando', 'fernando@gmail.com', '12345678');
+
+INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
+VALUES ('robson', 'robson@gmail.com', '12345678');
+
+INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
+VALUES ('mariana', 'mariana@gmail.com', '12345678');
+
+INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
+VALUES ('natalia', 'natalia@gmail.com', '12345678');
 
 INSERT INTO `netflix_assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
 VALUES ('Fernando Ramos da Silva', 'fernandoramos.dev@gmail.com', '11999800861', 2);

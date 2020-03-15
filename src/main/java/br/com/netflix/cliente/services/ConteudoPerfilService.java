@@ -22,7 +22,7 @@ public class ConteudoPerfilService {
 	
 	public List<ConteudoPerfilCliente> getConteudo() {
 		List<ConteudoPerfilCliente> listaConteudos = conteudoRepository.findAll();		
-		simpleSourceBean.publishFindGenero("SELECT", listaConteudos);
+		//simpleSourceBean.publishFindGenero("SELECT", listaConteudos);
 		return listaConteudos;
 	}
 	
