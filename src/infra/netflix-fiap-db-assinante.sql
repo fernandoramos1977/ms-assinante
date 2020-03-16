@@ -1,7 +1,7 @@
 SET GLOBAL time_zone = '+3:00';
-drop schema if exists netflix_assinante;
-create schema netflix_assinante;
-use netflix_assinante;
+
+CREATE SCHEMA if not exists netflix_assinante;
+
 
 CREATE TABLE usuario (
   codigo BIGINT  NOT NULL   AUTO_INCREMENT,
@@ -14,14 +14,6 @@ CREATE TABLE perfil (
   id BIGINT  NOT NULL   AUTO_INCREMENT,
   nome VARCHAR(45)  NOT NULL  ,  
 PRIMARY KEY(id));
-
-CREATE TABLE usuario_perfis (
-  codigo BIGINT  NOT NULL  ,
-  id BIGINT  NOT NULL  ,  
-FOREIGN KEY (codigo) REFERENCES usuario (codigo) ON DELETE RESTRICT ON UPDATE CASCADE,
-FOREIGN KEY (id) REFERENCES perfil (id) ON DELETE RESTRICT ON UPDATE CASCADE,
-PRIMARY KEY(codigo, id));
-
 
 CREATE TABLE cliente (
   codigo BIGINT  NOT NULL   AUTO_INCREMENT,
@@ -136,16 +128,16 @@ INDEX Chamado_Tecnico_FKIndex1(dispositivo_assinante_codigo),
       ON UPDATE NO ACTION);
 
 INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
-VALUES ('fernando', 'fernandoramos.dev@gmail.com', '$2a$10$dGK3tBeSMAw0CdCR9f7TjOuzX825lr1XitmeOGQQyQmfZrIeixWJe');
+VALUES ('fernando', 'fernandoramos.dev@gmail.com', '12345678');
 
 INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
-VALUES ('robson', 'br.robsonferreira@gmail.com', '$2a$10$dGK3tBeSMAw0CdCR9f7TjOuzX825lr1XitmeOGQQyQmfZrIeixWJe');
+VALUES ('robson', 'br.robsonferreira@gmail.com', '12345678');
 
 INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
-VALUES ('mariana', 'mariana.araujo.88@gmail.com', '$2a$10$dGK3tBeSMAw0CdCR9f7TjOuzX825lr1XitmeOGQQyQmfZrIeixWJe');
+VALUES ('mariana', 'mariana.araujo.88@gmail.com', '12345678');
 
 INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
-VALUES ('natalia', 'nathaliarmoncao@gmail.com', '$2a$10$dGK3tBeSMAw0CdCR9f7TjOuzX825lr1XitmeOGQQyQmfZrIeixWJe');
+VALUES ('natalia', 'nathaliarmoncao@gmail.com', '12345678');
 
 INSERT INTO `netflix_assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
 VALUES ('Fernando Ramos da Silva', 'fernandoramos.dev@gmail.com', '11999800861', 2);
