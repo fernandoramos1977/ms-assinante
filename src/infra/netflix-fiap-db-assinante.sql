@@ -1,13 +1,27 @@
 SET GLOBAL time_zone = '+3:00';
-create schema if not exists netflix_assinante;
+drop schema if exists netflix_assinante;
+create schema netflix_assinante;
 use netflix_assinante;
 
 CREATE TABLE usuario (
   codigo BIGINT  NOT NULL   AUTO_INCREMENT,
   nome VARCHAR(45)  NOT NULL  ,
   email VARCHAR(45)  NOT NULL  ,
-  senha VARCHAR(8)  NOT NULL  ,  
+  senha VARCHAR(60)  NOT NULL  ,  
 PRIMARY KEY(codigo));
+
+CREATE TABLE perfil (
+  id BIGINT  NOT NULL   AUTO_INCREMENT,
+  nome VARCHAR(45)  NOT NULL  ,  
+PRIMARY KEY(id));
+
+CREATE TABLE usuario_perfis (
+  codigo BIGINT  NOT NULL  ,
+  id BIGINT  NOT NULL  ,  
+FOREIGN KEY (codigo) REFERENCES usuario (codigo) ON DELETE RESTRICT ON UPDATE CASCADE,
+FOREIGN KEY (id) REFERENCES perfil (id) ON DELETE RESTRICT ON UPDATE CASCADE,
+PRIMARY KEY(codigo, id));
+
 
 CREATE TABLE cliente (
   codigo BIGINT  NOT NULL   AUTO_INCREMENT,
@@ -122,16 +136,16 @@ INDEX Chamado_Tecnico_FKIndex1(dispositivo_assinante_codigo),
       ON UPDATE NO ACTION);
 
 INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
-VALUES ('fernando', 'fernando@gmail.com', '12345678');
+VALUES ('fernando', 'fernandoramos.dev@gmail.com', '$2a$10$dGK3tBeSMAw0CdCR9f7TjOuzX825lr1XitmeOGQQyQmfZrIeixWJe');
 
 INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
-VALUES ('robson', 'robson@gmail.com', '12345678');
+VALUES ('robson', 'br.robsonferreira@gmail.com', '$2a$10$dGK3tBeSMAw0CdCR9f7TjOuzX825lr1XitmeOGQQyQmfZrIeixWJe');
 
 INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
-VALUES ('mariana', 'mariana@gmail.com', '12345678');
+VALUES ('mariana', 'mariana.araujo.88@gmail.com', '$2a$10$dGK3tBeSMAw0CdCR9f7TjOuzX825lr1XitmeOGQQyQmfZrIeixWJe');
 
 INSERT INTO `netflix_assinante`.`usuario` (`nome`, `email`, `senha`)
-VALUES ('natalia', 'natalia@gmail.com', '12345678');
+VALUES ('natalia', 'nathaliarmoncao@gmail.com', '$2a$10$dGK3tBeSMAw0CdCR9f7TjOuzX825lr1XitmeOGQQyQmfZrIeixWJe');
 
 INSERT INTO `netflix_assinante`.`cliente` (`nome`, `email`, `telefone`, `plano_assinatura`)
 VALUES ('Fernando Ramos da Silva', 'fernandoramos.dev@gmail.com', '11999800861', 2);

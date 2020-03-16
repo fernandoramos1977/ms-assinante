@@ -11,29 +11,31 @@ services:
       MYSQL_ROOT_PASSWORD: "fiap20202019"
       MYSQL_DATABASE: "netflix_assinante"
     ports:
-      - "3306:3306"
+      - 3306:3306      
     volumes:
-      - C:/Users/Fernando/Documents/Projetos/workspace/mysql-data:/var/lib/mysql
-      - C:/Users/Fernando/Documents/Projetos/workspace/mysql-dump:/docker-entrypoint-initdb.d
+      - C:/Users/Fernando/Documents/Projetos/workspace/mysql-data:/var/lib/mysql      
+      - C:/Users/Fernando/Documents/Projetos/workspace/ms-assinante/src/infra:/docker-entrypoint-initdb.d    
     networks:
-      - mysql-compose-network
+      - nw_aplicacao
   assinante:
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     image: ms-assinante
     ports: 
-      - 9090
+      - 9090:9090
+    environment: 
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_NAME=netflix_assinante
+      - DATABASE_PASSWORD=fiap20202019
+      - DATABASE_PORT=3306
     networks:
-      - mysql-compose-network
-#adminer:
-#  image: adminer
-#  restart: always
-#    ports:
-#      - 50000:50000
-#    networks:
-#      - mysql-compose-network
-
+      - nw_aplicacao
+    depends_on: 
+      - db
+    links:
+      - db
 networks: 
-  mysql-compose-network:
+  nw_aplicacao: 
     driver: bridge
