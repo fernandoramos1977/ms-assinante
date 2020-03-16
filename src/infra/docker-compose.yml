@@ -11,7 +11,7 @@ services:
       MYSQL_ROOT_PASSWORD: "fiap20202019"
       MYSQL_DATABASE: "netflix_assinante"
     ports:
-      - 3306:3306
+      - 3306:3306      
     volumes:
       - C:/Users/Fernando/Documents/Projetos/workspace/mysql-data:/var/lib/mysql      
       - C:/Users/Fernando/Documents/Projetos/workspace/ms-assinante/src/infra:/docker-entrypoint-initdb.d    
@@ -24,6 +24,12 @@ services:
     image: ms-assinante
     ports: 
       - 9090:9090
+    environment: 
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_NAME=netflix_assinante
+      - DATABASE_PASSWORD=fiap20202019
+      - DATABASE_PORT=3306
     networks:
       - nw_aplicacao
     depends_on: 
@@ -32,4 +38,4 @@ services:
       - db
 networks: 
   nw_aplicacao: 
-    external: true
+    driver: bridge
