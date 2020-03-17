@@ -14,8 +14,8 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - /home/ec2-user/mysql-data:/var/lib/mysql:rw      
-      - /var/lib/jenkins/workspace/TrabalhoCICD/src/infra:/docker-entrypoint-initdb.d/:rw
+      - C:/Users/Fernando/Documents/Projetos/workspace/mysql-data:/var/lib/mysql:rw      
+      - C:/Users/Fernando/Documents/Projetos/workspace/ms-assinante/infra:/docker-entrypoint-initdb.d/:rw
     networks:
       - nw_aplicacao
   assinante:
