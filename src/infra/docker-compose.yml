@@ -15,7 +15,7 @@ services:
       - 3306:3306
     volumes:
       - /home/ec2-user/mysql-data:/var/lib/mysql:rw      
-      - /var/lib/jenkins/workspace/CICDTrabalho/src/infra:/docker-entrypoint-initdb.d/:rw
+      - /var/lib/jenkins/workspace/testecicd/src/infra:/docker-entrypoint-initdb.d/:rw
     networks:
       - nw_aplicacao
   assinante:
