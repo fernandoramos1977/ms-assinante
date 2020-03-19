@@ -4,10 +4,7 @@ pipeline {
         maven 'maven-3.6.3'
         jdk 'jdk-11'
     }
-    stages {
-        if(env.BRANCH_NAME == 'master'){
-          stage("Upload")
-        }
+    stages {        
         stage('Build') {
             steps {
                sh 'mvn clean test install'
