@@ -5,6 +5,9 @@ pipeline {
         jdk 'jdk-11'
     }
     stages {
+        if(env.BRANCH_NAME == 'master'){
+          stage("Upload")
+        }
         stage('Build') {
             steps {
                sh 'mvn clean test install'
