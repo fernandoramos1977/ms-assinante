@@ -10,10 +10,10 @@ pipeline {
                sh 'mvn clean test install'
         }
         }
-    }
         stage('Deploy') {
             steps {
                sh "docker-compose up --build"
+            }
         }
     }
 }
